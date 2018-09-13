@@ -1,0 +1,53 @@
+<style>
+  th{
+    background-color: darkgrey;
+  text-align: center;
+  cursor: pointer;
+  height:30px;
+  vertical-align:middle;
+  }
+</style>
+<br>
+<input type="text" class="form-control" placeholder="Search......." [(ngModel)]="txt1">
+<br>
+<table class="table table-bordered">
+    <th (click)="funclick('uname')">User Name</th>
+    <th (click)="funclick('city')">User City</th>
+    <th></th>
+  <tr *ngFor="let x of obj |orderBy:cname:ord | filter:txt1 | paginate:{itemsPerPage:4,currentPage:pn}">
+  <td>{{x.uname}}</td>
+  <td>{{x.city}}</td>
+  <td><input type="button" value="Delete" class="btn btn-danger"></td>
+  </tr>
+</table>
+<div>
+  <pagination-controls (pageChange)="pn=$event"></pagination-controls>
+</div>
+<select [(ngModel)]="drp1" class="form-control" style="width:200px">
+    <option>--All--</option>
+    <option>Apple</option>
+    <option>Mango</option>
+    <option>SBerry</option>
+</select>
+{{drp1}}
+<div [ngSwitch]="drp1">
+  
+  <div *ngSwitchCase="'Apple'">
+    <h2>Apple</h2>
+    <img src="../assets/apple.jpg" width="100">
+  </div>
+  <div *ngSwitchCase="'Mango'">
+    <h2>Mango</h2>
+    <img src="../assets/mango.jpg" width="100">
+  </div>
+  <div *ngSwitchCase="'SBerry'">
+    <h2>SBerry</h2>
+    <img src="../assets/sb.jpg" width="100">
+  </div>
+  <div *ngSwitchDefault>
+    <h2>All</h2>
+    <img src="../assets/apple.jpg" width="100">
+    <img src="../assets/mango.jpg" width="100">
+    <img src="../assets/sb.jpg" width="100">
+  </div>
+</div>

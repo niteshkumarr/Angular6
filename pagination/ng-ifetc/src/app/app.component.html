@@ -1,0 +1,31 @@
+<style>
+  .clsabc{
+    color:red;
+    font-weight:bold;
+  text-decoration: underline;
+  }
+  .xyz{
+    color:blue;
+    text-decoration: overline
+  }
+</style>
+{{x}}- {{y}}
+<h1 *ngIf="x>y else abc">
+  X is big
+</h1>
+<ng-template #abc>
+<h1>Y is Big</h1>
+</ng-template>
+
+-----------------
+<li *ngFor="let val of arr;let i=index">
+{{i+1}}-{{val}}
+</li>
+-----------------
+<span [ngClass]="tmp" (mouseover)="tmp='xyz'" (mouseout)="tmp='clsabc'">
+  Welcome to all
+</span>
+-----------------
+<div [ngStyle]="{color:'green',fontSize:'20px'}">
+  WELCOME
+</div>
